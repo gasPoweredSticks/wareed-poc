@@ -464,6 +464,20 @@ section.soft {
   width: 100%;
 }
 
+/* Offer cards — real promo art, buttons below like wareed */
+.service-card .offer-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detail-img {
+  border-radius: 24px;
+  margin-bottom: 24px;
+  max-width: 480px;
+  box-shadow: var(--shadow);
+}
+
 /* ── Stats ────────────────────────────────── */
 .stats {
   display: grid;

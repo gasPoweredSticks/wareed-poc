@@ -32,7 +32,8 @@ Every page is addressable by URL, so the agent can redirect the user by sending 
 
 | URL | Page |
 |---|---|
-| `/` | Home (hero, categories, all services, testimonials, FAQ) |
+| `/` | Home (hero, offers, categories, all services, testimonials, FAQ) |
+| `/?page=offers` | أفضل العروض (real Wareed promos) |
 | `/?page=packages` | الباقات المتخصصة (specialized packages) |
 | `/?page=tests` | التحاليل الفردية (individual tests) |
 | `/?page=homecare` | وريد كير — الرعاية المنزلية (home care) |
@@ -45,6 +46,12 @@ Every page is addressable by URL, so the agent can redirect the user by sending 
 
 | Category | Slug | Service | Price (SAR) |
 |---|---|---|---|
+| offers | `any-test-40` | أي تحليل بـ40 وأي تحليلين بـ60 | 40 |
+| offers | `any-4-tests-100` | أي 4 تحاليل بـ100 ريال | 100 |
+| offers | `worldcup-basic-11` | عرض كأس العالم — أي 11 تحليل بـ198 | 198 |
+| offers | `worldcup-full-26` | عرض كأس العالم — اختر 26 تحليل بـ352 | 352 |
+| offers | `summer-comprehensive-448` | باقة الصيف الشاملة + 8 تحاليل مجاناً | 448 |
+| offers | `luxury-health-package` | باقة الفخامة الصحية — 120 تحليل | 3999 |
 | packages | `thyroid-package` | باقة فحص الغدة الدرقية | 199 |
 | packages | `diabetes-package` | باقة فحص السكري | 149 |
 | packages | `womens-health-package` | باقة صحة المرأة | 349 |

@@ -17,6 +17,7 @@ const categoryUrl = (c) => `/?page=${c.id}`;
 
 // Line icons per category (stroke-based, inherit styling from CSS)
 const ICONS = {
+  offers: `<path d="M3 12l9-9h6a3 3 0 0 1 3 3v6l-9 9-9-9z"/><circle cx="16" cy="8" r="1.6"/>`,
   packages: `<path d="M9 3h6v3.5l4.2 8.4A4 4 0 0 1 15.6 21H8.4a4 4 0 0 1-3.6-6.1L9 6.5V3z"/><path d="M7.5 14h9"/><path d="M9 3h6"/>`,
   tests: `<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5 21 21"/><path d="M7.5 10h5M10 7.5v5"/>`,
   homecare: `<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M12 11v6M9 14h6"/>`,
@@ -29,16 +30,20 @@ const svgIcon = (catId, cls) =>
 const arrowIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1.7 5.3 3.3 3.3a1 1 0 0 1 0 1.4l-3.3 3.3-1.4-1.4 1.6-1.6H7v-2h6.9l-1.6-1.6 1.4-1.4z" transform="scale(-1,1) translate(-24,0)"/></svg>`;
 
 function serviceCard(s) {
-  return `
-    <div class="card service-card" data-service="${s.id}">
-      <div class="panel">
+  // Promo offers carry real Wareed card art (name/price baked into the image).
+  const head = s.img
+    ? `<a href="${serviceUrl(s)}"><img class="offer-img" src="${s.img}" alt="${s.name}" loading="lazy" /></a>`
+    : `<div class="panel">
         <img class="watermark" src="/assets/img/logo-mark.svg" alt="" />
         <span class="price-tag">${s.price} ريال</span>
         ${svgIcon(s.category, "service-icon")}
         <h3>${s.name}</h3>
-      </div>
+      </div>`;
+  return `
+    <div class="card service-card" data-service="${s.id}">
+      ${head}
       <div class="body">
-        <p class="short">${s.short}</p>
+        ${s.img ? "" : `<p class="short">${s.short}</p>`}
         <div class="card-actions">
           <a class="btn btn-primary" href="${serviceUrl(s)}&book=1">حجز</a>
           <a class="btn btn-outline" href="${serviceUrl(s)}">تفاصيل الباقة</a>
@@ -60,7 +65,22 @@ function renderHome() {
       </div>
     </div>
 
-    <section style="padding-top:16px">
+    <section id="offers" style="padding-top:8px">
+      <div class="container">
+        <div class="section-head">
+          <h2>أفضل عروض مختبرات وريد</h2>
+          <p>عروض قربت تنتهي — احجز قبل نفاد المدة</p>
+        </div>
+        <div class="grid grid-3">
+          ${servicesOf("offers").map(serviceCard).join("")}
+        </div>
+        <div class="section-cta">
+          <a class="btn btn-pill" href="/?page=offers">عرض الكل ${arrowIcon}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" style="padding-top:32px">
       <div class="container">
         <div class="about-card">
           <div class="logo-box"><img src="/assets/img/logo-mark.svg" alt="مختبرات وريد الطبية" /></div>
@@ -73,7 +93,7 @@ function renderHome() {
       </div>
     </section>
 
-    <section id="categories" class="soft">
+    <section id="categories">
       <div class="container">
         <div class="section-head">
           <h2>خدماتنا</h2>
@@ -92,7 +112,7 @@ function renderHome() {
       </div>
     </section>
 
-    ${CATEGORIES.map(
+    ${CATEGORIES.filter((c) => c.id !== "offers").map(
       (c, i) => `
       <section class="${i % 2 === 1 ? "soft" : ""}" id="${c.id}">
         <div class="container">
@@ -222,6 +242,7 @@ function renderService(id) {
     </div>
     <div class="container detail">
       <div>
+        ${s.img ? `<img class="detail-img" src="${s.img}" alt="${s.name}" />` : ""}
         <h1>${s.name}</h1>
         <p class="desc">${s.description}</p>
         <h3>تشمل الخدمة</h3>
