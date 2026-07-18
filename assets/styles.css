@@ -12,14 +12,17 @@
 }
 
 :root {
-  --primary: #95389e;
-  --primary-dark: #5e3296;
-  --purple-deep: #3b2058;
+  /* Wareed brand palette (Elementor globals on wareed.com.sa) */
+  --primary: #95389e;        /* global primary */
+  --primary-dark: #5e3296;   /* headings / outline buttons */
+  --purple-deep: #621469;    /* extra deep purple */
+  --secondary: #43d8c9;      /* global secondary (teal) */
+  --accent: #1bbbac;         /* global accent (teal) */
+  --whatsapp: #128c7e;       /* floating contact buttons */
   --primary-light: #f6ecf8;
   --lilac-border: #d9c9ea;
-  --teal: #46a695;
   --ink: #2b2138;
-  --muted: #6f6580;
+  --muted: #717171;          /* global text */
   --bg: #ffffff;
   --bg-soft: #faf7fc;
   --radius-lg: 28px;
@@ -70,7 +73,7 @@ h1, h2, h3 {
 
 /* ── Top bar ──────────────────────────────── */
 .topbar {
-  background: radial-gradient(120% 200% at 80% 0%, #4a2a6e 0%, var(--purple-deep) 55%, #2e1745 100%);
+  background: #3b2058 url("/assets/img/pattern-purple.webp") center / cover;
   color: #fff;
   padding: 10px 0;
 }
@@ -157,7 +160,7 @@ nav.main-nav a.active {
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 10px;
+  border-radius: 6px;
   font-weight: 500;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -187,7 +190,7 @@ nav.main-nav a.active {
 }
 
 .btn-pill {
-  border-radius: 999px;
+  border-radius: 30px;
   background: var(--primary-dark);
   color: #fff;
   padding: 12px 36px;
@@ -730,7 +733,7 @@ section.soft {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: var(--teal);
+  background: var(--whatsapp);
   display: grid;
   place-items: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -749,7 +752,7 @@ section.soft {
 
 /* ── Footer ───────────────────────────────── */
 footer {
-  background: radial-gradient(130% 200% at 80% 0%, #4a2a6e 0%, var(--purple-deep) 60%, #2e1745 100%);
+  background: #3b2058 url("/assets/img/pattern-purple.webp") center / cover;
   color: #fff;
   padding: 56px 0 24px;
   margin-top: 48px;
