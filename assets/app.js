@@ -153,7 +153,7 @@ function renderHome() {
         <div class="stats">
           <div class="stat"><h3>10,000,000</h3><p>تحليل تم إجرائه في مختبرات وريد</p></div>
           <div class="stat"><h3>700,000</h3><p>عميل تم خدمته في مختبرات وريد</p></div>
-          <div class="stat"><h3>24 ساعة</h3><p>متوسط وقت ظهور النتائج</p></div>
+          <div class="stat"><h3>60+</h3><p>فرعاً حول المملكة</p></div>
         </div>
       </div>
     </section>
