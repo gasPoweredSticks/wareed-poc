@@ -267,30 +267,53 @@ nav.main-nav a.active {
 }
 
 .about-card {
-  border: 1.5px solid var(--lilac-border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
+  border: 2px solid var(--primary-dark);
+  border-radius: 24px;
+  padding: 28px 32px;
   display: flex;
-  gap: 32px;
+  flex-direction: row-reverse; /* text at inline-start (right), logo at inline-end (left) */
+  justify-content: space-between;
+  gap: 28px;
   align-items: center;
   background: #fff;
+  box-shadow: 0 6px 24px rgba(59, 32, 88, 0.06);
 }
 
 .about-card .logo-box {
-  border: 1.5px solid var(--lilac-border);
-  border-radius: 20px;
-  padding: 28px 36px;
+  border-radius: 16px;
+  padding: 8px;
   display: grid;
   place-items: center;
   flex: 0 0 auto;
+  background: #fff;
 }
 
 .about-card .logo-box img {
-  width: 190px;
+  width: 170px;
 }
 
 .about-card .about-text {
-  max-width: 62ch;
+  max-width: 52ch;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-dark);
+  font-weight: 600;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+}
+
+.link-arrow:hover {
+  color: var(--primary);
+}
+
+.link-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-dark);
 }
 
 .about-card h2 {
@@ -852,16 +875,12 @@ footer a:hover {
   }
 
   .about-card {
-    padding: 24px;
-    gap: 24px;
-  }
-
-  .about-card .logo-box {
-    padding: 18px;
+    padding: 20px;
+    gap: 20px;
   }
 
   .about-card .logo-box img {
-    width: 120px;
+    width: 110px;
   }
 
   .detail {

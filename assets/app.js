@@ -76,19 +76,19 @@ function renderHome() {
       <div class="container">
         <div class="about-grid">
           <div class="about-card">
-            <div class="logo-box"><img src="/assets/img/logo-care.webp" alt="وريد للرعاية المنزلية" /></div>
-            <div class="about-text">
-              <h2>وريد للرعاية المنزلية</h2>
-              <p>مجموعة خدمات وباقات طبية متنوعة من وريد للرعاية المنزلية: المحاليل الوريدية، الإبر العلاجية، وسحب العينات في منزلك بأمان وسهولة.</p>
-              <a class="btn btn-pill" href="/?page=homecare">وريـد كـير ${arrowIcon}</a>
-            </div>
-          </div>
-          <div class="about-card">
             <div class="logo-box"><img src="/assets/img/logo-mark.svg" alt="مختبرات وريد الطبية" /></div>
             <div class="about-text">
               <h2>مختبرات وريد الطبية</h2>
-              <p>تقدّم مختبرات وريد الطبية فحوصات شاملة لمتابعة صحتك، أفضل مختبر طبي حاصل على شهادة "سباهي". نقدّم خدمات وتحاليل تدعم رحلتك الصحية.</p>
-              <a class="btn btn-pill" href="/?page=packages">وريـد لاب ${arrowIcon}</a>
+              <p>تقدّم مختبرات وريد الطبية فحوصات شاملة لمتابعة صحتك، أفضل مختبر طبي حاصل على شهادة "سباهي" نقدّم خدمات وتحاليل تدعم رحلتك الصحية</p>
+              <a class="link-arrow" href="/?page=packages">وريـد لاب ${arrowIcon}</a>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="logo-box"><img src="/assets/img/logo-care.webp" alt="وريد للرعاية المنزلية" /></div>
+            <div class="about-text">
+              <h2>وريد للرعاية المنزلية</h2>
+              <p>مجموعة خدمات وباقات طبية متنوعة من وريد للرعاية المنزلية</p>
+              <a class="link-arrow" href="/?page=homecare">وريـد كـير ${arrowIcon}</a>
             </div>
           </div>
         </div>
