@@ -15,15 +15,34 @@ const servicesOf = (catId) => SERVICES.filter((s) => s.category === catId);
 const serviceUrl = (s) => `/?page=service&id=${s.id}`;
 const categoryUrl = (c) => `/?page=${c.id}`;
 
+// Line icons per category (stroke-based, inherit styling from CSS)
+const ICONS = {
+  packages: `<path d="M9 3h6v3.5l4.2 8.4A4 4 0 0 1 15.6 21H8.4a4 4 0 0 1-3.6-6.1L9 6.5V3z"/><path d="M7.5 14h9"/><path d="M9 3h6"/>`,
+  tests: `<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5 21 21"/><path d="M7.5 10h5M10 7.5v5"/>`,
+  homecare: `<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M12 11v6M9 14h6"/>`,
+  consultations: `<path d="M5 3v5a5 5 0 0 0 10 0V3"/><path d="M10 13v3a4 4 0 0 0 8 0v-1"/><circle cx="18" cy="12" r="2.5"/>`,
+};
+
+const svgIcon = (catId, cls) =>
+  `<svg class="${cls}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${ICONS[catId]}</svg>`;
+
+const arrowIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1.7 5.3 3.3 3.3a1 1 0 0 1 0 1.4l-3.3 3.3-1.4-1.4 1.6-1.6H7v-2h6.9l-1.6-1.6 1.4-1.4z" transform="scale(-1,1) translate(-24,0)"/></svg>`;
+
 function serviceCard(s) {
   return `
     <div class="card service-card" data-service="${s.id}">
-      <h3>${s.name}</h3>
-      <p class="short">${s.short}</p>
-      <div class="price">${s.price} <small>ريال</small></div>
-      <div class="card-actions">
-        <a class="btn btn-primary" href="${serviceUrl(s)}&book=1">حجز</a>
-        <a class="btn btn-outline" href="${serviceUrl(s)}">التفاصيل</a>
+      <div class="panel">
+        <img class="watermark" src="/assets/img/logo-mark.svg" alt="" />
+        <span class="price-tag">${s.price} ريال</span>
+        ${svgIcon(s.category, "service-icon")}
+        <h3>${s.name}</h3>
+      </div>
+      <div class="body">
+        <p class="short">${s.short}</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="${serviceUrl(s)}&book=1">حجز</a>
+          <a class="btn btn-outline" href="${serviceUrl(s)}">تفاصيل الباقة</a>
+        </div>
       </div>
     </div>`;
 }
@@ -31,16 +50,30 @@ function serviceCard(s) {
 function renderHome() {
   document.title = "مجموعة مختبرات وريد الطبية | تحاليل دقيقة وخدمة منزلية موثوقة";
   app.innerHTML = `
-    <div class="hero">
+    <div class="hero-wrap">
       <div class="container">
-        <span class="badge">معتمدون من سباهي ومرخصون من وزارة الصحة</span>
-        <h1>مختبرات وريد الطبية</h1>
-        <p>فحوصات شاملة لمتابعة صحتك — تحاليل مخبرية دقيقة، رعاية منزلية متكاملة، واستشارات طبية متخصصة. نصلك أينما كنت.</p>
-        <a class="btn btn-primary" href="#categories" style="background:#fff;color:var(--primary-dark)">استكشف خدماتنا</a>
+        <div class="hero-carousel" id="hero-carousel">
+          <a class="slide active" href="/?page=packages"><img src="/assets/img/hero-1.webp" alt="عروض مختبرات وريد" /></a>
+          <a class="slide" href="/?page=tests"><img src="/assets/img/hero-2.webp" alt="مختبرات وريد" /></a>
+        </div>
+        <div class="hero-dots" id="hero-dots"></div>
       </div>
     </div>
 
-    <section id="categories">
+    <section style="padding-top:16px">
+      <div class="container">
+        <div class="about-card">
+          <div class="logo-box"><img src="/assets/img/logo-mark.svg" alt="مختبرات وريد الطبية" /></div>
+          <div>
+            <h2>مختبرات وريد الطبية</h2>
+            <p>تقدّم مختبرات وريد الطبية فحوصات شاملة لمتابعة صحتك، أفضل مختبر طبي حاصل على شهادة "سباهي". نقدّم خدمات وتحاليل تدعم رحلتك الصحية — تحاليل مخبرية دقيقة، رعاية منزلية متكاملة، واستشارات طبية متخصصة.</p>
+            <a class="btn btn-pill" href="#categories">استكشف خدماتنا ${arrowIcon}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="soft">
       <div class="container">
         <div class="section-head">
           <h2>خدماتنا</h2>
@@ -50,7 +83,7 @@ function renderHome() {
           ${CATEGORIES.map(
             (c) => `
             <a class="card category-card" href="${categoryUrl(c)}">
-              <div class="icon">${c.icon}</div>
+              <div class="icon-circle">${svgIcon(c.id, "")}</div>
               <h3>${c.name}</h3>
               <p>${c.tagline}</p>
             </a>`
@@ -61,7 +94,7 @@ function renderHome() {
 
     ${CATEGORIES.map(
       (c, i) => `
-      <section class="${i % 2 === 0 ? "soft" : ""}" id="${c.id}">
+      <section class="${i % 2 === 1 ? "soft" : ""}" id="${c.id}">
         <div class="container">
           <div class="section-head">
             <h2>${c.name}</h2>
@@ -70,15 +103,19 @@ function renderHome() {
           <div class="grid grid-3">
             ${servicesOf(c.id).map(serviceCard).join("")}
           </div>
+          <div class="section-cta">
+            <a class="btn btn-pill" href="${categoryUrl(c)}">عرض الكل ${arrowIcon}</a>
+          </div>
         </div>
       </section>`
     ).join("")}
 
     <section>
       <div class="container">
+        <div class="section-head"><h2>إحصائيات المختبر</h2></div>
         <div class="stats">
-          <div class="stat"><h3>10,000,000+</h3><p>تحليل تم إجراؤه في مختبرات وريد</p></div>
-          <div class="stat"><h3>700,000+</h3><p>عميل تم خدمته في مختبرات وريد</p></div>
+          <div class="stat"><h3>10,000,000</h3><p>تحليل تم إجرائه في مختبرات وريد</p></div>
+          <div class="stat"><h3>700,000</h3><p>عميل تم خدمته في مختبرات وريد</p></div>
           <div class="stat"><h3>24 ساعة</h3><p>متوسط وقت ظهور النتائج</p></div>
         </div>
       </div>
@@ -86,17 +123,42 @@ function renderHome() {
 
     <section class="soft" id="testimonials">
       <div class="container">
-        <div class="section-head"><h2>آراء العملاء</h2></div>
+        <div class="section-head"><h2>اراء العملاء</h2></div>
         <div class="grid grid-3">
           ${TESTIMONIALS.map(
-            (t) => `<div class="testimonial">"${t}"<div class="who">من عملاء مجموعة وريد</div></div>`
+            (t) => `
+            <div class="testimonial">
+              <div class="who">من عملاء مجموعة وريد</div>
+              ${t}
+            </div>`
           ).join("")}
         </div>
       </div>
     </section>
 
+    <section id="partners">
+      <div class="container">
+        <div class="section-head"><h2>شركاء مجموعة مختبرات وريد الطبية</h2></div>
+        <div class="partners-grid">
+          ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            .map((n) => `<div class="partner"><img src="/assets/img/partners/p${n}.svg" alt="شريك" loading="lazy" /></div>`)
+            .join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="branches">
+      <div class="container">
+        <div class="section-head">
+          <h2>اكتشف فروع مختبرات وريد الطبية القريبة منك</h2>
+          <p>نخدمك في فروعنا وفي منزلك في مختلف مناطق المملكة</p>
+        </div>
+        <div class="map-card"><img src="/assets/img/map.webp" alt="خريطة فروع وريد" /></div>
+      </div>
+    </section>
+
     <section id="faq">
-      <div class="container" style="max-width:820px">
+      <div class="container" style="max-width:840px">
         <div class="section-head"><h2>الأسئلة الشائعة</h2></div>
         ${FAQS.map(
           (f) => `
@@ -107,6 +169,26 @@ function renderHome() {
         ).join("")}
       </div>
     </section>`;
+
+  // Hero carousel
+  const slides = [...document.querySelectorAll("#hero-carousel .slide")];
+  const dotsWrap = document.getElementById("hero-dots");
+  let current = 0;
+  slides.forEach((_, i) => {
+    const b = document.createElement("button");
+    if (i === 0) b.classList.add("active");
+    b.addEventListener("click", () => show(i));
+    dotsWrap.appendChild(b);
+  });
+  const dots = [...dotsWrap.children];
+  function show(i) {
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+    current = i;
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+  }
+  setInterval(() => show((current + 1) % slides.length), 5000);
 }
 
 function renderCategory(catId) {
@@ -150,7 +232,8 @@ function renderService(id) {
       <div class="booking-box" id="booking">
         <div class="price">${s.price} <small>ريال</small></div>
         <div class="duration">${s.duration}</div>
-        <button class="btn btn-primary" id="book-btn" data-service="${s.id}">احجز الآن</button>
+        <button class="btn btn-primary" id="book-btn" data-service="${s.id}">حجز</button>
+        <a class="btn btn-outline" href="${categoryUrl(cat)}">تفاصيل الباقة</a>
         <div class="hint">تحدث مع مساعدنا الذكي لإتمام الحجز أو اتصل على 8001221220</div>
       </div>
     </div>`;
@@ -174,7 +257,7 @@ function renderNotFound() {
   app.innerHTML = `
     <section style="text-align:center">
       <div class="container">
-        <h2 style="color:var(--primary-dark);margin-bottom:12px">الصفحة غير موجودة</h2>
+        <h2 style="color:var(--primary-dark);margin-bottom:14px">الصفحة غير موجودة</h2>
         <a class="btn btn-primary" href="/">العودة للرئيسية</a>
       </div>
     </section>`;
@@ -189,5 +272,5 @@ else renderCategory(page);
 document.querySelectorAll("nav.main-nav a").forEach((a) => {
   const target = new URL(a.href, location.origin);
   const p = new URLSearchParams(target.search).get("page") || "home";
-  if (p === page) a.classList.add("active");
+  if (p === page && !target.hash) a.classList.add("active");
 });
