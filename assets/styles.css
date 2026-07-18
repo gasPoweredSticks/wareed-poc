@@ -73,7 +73,7 @@ h1, h2, h3 {
 
 /* ── Top bar ──────────────────────────────── */
 .topbar {
-  background: #3b2058 url("/assets/img/pattern-purple.webp") center / cover;
+  background: #3b2058;
   color: #fff;
   padding: 10px 0;
 }
@@ -752,7 +752,7 @@ section.soft {
 
 /* ── Footer ───────────────────────────────── */
 footer {
-  background: #3b2058 url("/assets/img/pattern-purple.webp") center / cover;
+  background: #3b2058;
   color: #fff;
   padding: 56px 0 24px;
   margin-top: 48px;
