@@ -30,7 +30,8 @@ const svgIcon = (catId, cls) =>
 const arrowIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1.7 5.3 3.3 3.3a1 1 0 0 1 0 1.4l-3.3 3.3-1.4-1.4 1.6-1.6H7v-2h6.9l-1.6-1.6 1.4-1.4z" transform="scale(-1,1) translate(-24,0)"/></svg>`;
 
 function serviceCard(s) {
-  // Promo offers carry real Wareed card art (name/price baked into the image).
+  // Real Wareed card art everywhere. Offers bake name+price into the image;
+  // services show name + price below the image like the wareed listings.
   const head = s.img
     ? `<a href="${serviceUrl(s)}"><img class="offer-img" src="${s.img}" alt="${s.name}" loading="lazy" /></a>`
     : `<div class="panel">
@@ -39,11 +40,17 @@ function serviceCard(s) {
         ${svgIcon(s.category, "service-icon")}
         <h3>${s.name}</h3>
       </div>`;
+  const meta =
+    s.category === "offers"
+      ? ""
+      : s.img
+        ? `<h3 class="card-title">${s.name}</h3><div class="card-price">${s.price} ريال</div>`
+        : `<p class="short">${s.short}</p>`;
   return `
     <div class="card service-card" data-service="${s.id}">
       ${head}
       <div class="body">
-        ${s.img ? "" : `<p class="short">${s.short}</p>`}
+        ${meta}
         <div class="card-actions">
           <a class="btn btn-primary" href="${serviceUrl(s)}&book=1">حجز</a>
           <a class="btn btn-outline" href="${serviceUrl(s)}">تفاصيل الباقة</a>

@@ -52,13 +52,13 @@ Every page is addressable by URL, so the agent can redirect the user by sending 
 | offers | `worldcup-full-26` | عرض كأس العالم — اختر 26 تحليل بـ352 | 352 |
 | offers | `summer-comprehensive-448` | باقة الصيف الشاملة + 8 تحاليل مجاناً | 448 |
 | offers | `luxury-health-package` | باقة الفخامة الصحية — 120 تحليل | 3999 |
-| packages | `thyroid-package` | باقة فحص الغدة الدرقية | 199 |
-| packages | `diabetes-package` | باقة فحص السكري | 149 |
-| packages | `womens-health-package` | باقة صحة المرأة | 349 |
-| tests | `vitamin-d-test` | تحليل فيتامين د | 99 |
-| tests | `cbc-test` | تحليل صورة الدم الكاملة CBC | 49 |
-| tests | `lipid-profile-test` | تحليل الدهون الشامل | 129 |
-| homecare | `vitamin-d-injection` | إبر فيتامين د العلاجية بالمنزل | 149 |
+| packages | `thyroid-package` | باقة صحة الغدة الدرقية | 199 |
+| packages | `diabetes-package` | باقة فحص السكري | 199 |
+| packages | `womens-fertility-package` | باقة خصوبة المرأة | 230 |
+| tests | `vitamin-d-test` | تحليل فيتامين د | 40 |
+| tests | `vitamin-b12-test` | تحليل فيتامين ب12 | 40 |
+| tests | `cbc-test` | تحليل صورة الدم كاملة | 40 |
+| homecare | `vitamin-d-injection` | إبر فيتامين د العلاجية | 149 |
 | homecare | `b12-injection` | إبر فيتامين B12 بالمنزل | 149 |
 | homecare | `iron-infusion` | إبر الحديد المكثف بالمنزل | 599 |
 | consultations | `internal-medicine-consult` | استشارة طب باطني | 199 |

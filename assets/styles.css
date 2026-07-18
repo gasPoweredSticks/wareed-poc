@@ -471,6 +471,21 @@ section.soft {
   display: block;
 }
 
+.service-card .card-title {
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.service-card .card-price {
+  text-align: center;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+}
+
 .detail-img {
   border-radius: 24px;
   margin-bottom: 24px;
