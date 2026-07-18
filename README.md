@@ -61,6 +61,7 @@ Every page is addressable by URL, so the agent can redirect the user by sending 
 | homecare | `vitamin-d-injection` | إبر فيتامين د العلاجية | 149 |
 | homecare | `b12-injection` | إبر فيتامين B12 بالمنزل | 149 |
 | homecare | `iron-infusion` | إبر الحديد المكثف بالمنزل | 599 |
+| homecare | `wareed-hadir` | وريد حاضر — سحب العينات من المنزل | 100 |
 | consultations | `internal-medicine-consult` | استشارة طب باطني | 199 |
 | consultations | `nutrition-consult` | استشارة تغذية علاجية | 149 |
 | consultations | `dermatology-consult` | استشارة جلدية | 179 |
