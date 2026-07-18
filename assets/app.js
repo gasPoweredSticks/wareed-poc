@@ -72,6 +72,29 @@ function renderHome() {
       </div>
     </div>
 
+    <section class="soft" style="padding-top:32px">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="logo-box"><img src="/assets/img/logo-care.webp" alt="وريد للرعاية المنزلية" /></div>
+            <div class="about-text">
+              <h2>وريد للرعاية المنزلية</h2>
+              <p>مجموعة خدمات وباقات طبية متنوعة من وريد للرعاية المنزلية: المحاليل الوريدية، الإبر العلاجية، وسحب العينات في منزلك بأمان وسهولة.</p>
+              <a class="btn btn-pill" href="/?page=homecare">وريـد كـير ${arrowIcon}</a>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="logo-box"><img src="/assets/img/logo-mark.svg" alt="مختبرات وريد الطبية" /></div>
+            <div class="about-text">
+              <h2>مختبرات وريد الطبية</h2>
+              <p>تقدّم مختبرات وريد الطبية فحوصات شاملة لمتابعة صحتك، أفضل مختبر طبي حاصل على شهادة "سباهي". نقدّم خدمات وتحاليل تدعم رحلتك الصحية.</p>
+              <a class="btn btn-pill" href="/?page=packages">وريـد لاب ${arrowIcon}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="offers" style="padding-top:8px">
       <div class="container">
         <div class="section-head">
@@ -83,19 +106,6 @@ function renderHome() {
         </div>
         <div class="section-cta">
           <a class="btn btn-pill" href="/?page=offers">عرض الكل ${arrowIcon}</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="soft" style="padding-top:32px">
-      <div class="container">
-        <div class="about-card">
-          <div class="logo-box"><img src="/assets/img/logo-mark.svg" alt="مختبرات وريد الطبية" /></div>
-          <div>
-            <h2>مختبرات وريد الطبية</h2>
-            <p>تقدّم مختبرات وريد الطبية فحوصات شاملة لمتابعة صحتك، أفضل مختبر طبي حاصل على شهادة "سباهي". نقدّم خدمات وتحاليل تدعم رحلتك الصحية — تحاليل مخبرية دقيقة، رعاية منزلية متكاملة، واستشارات طبية متخصصة.</p>
-            <a class="btn btn-pill" href="#categories">استكشف خدماتنا ${arrowIcon}</a>
-          </div>
         </div>
       </div>
     </section>

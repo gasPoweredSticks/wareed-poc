@@ -253,14 +253,25 @@ nav.main-nav a.active {
   transform: scale(1.2);
 }
 
-/* ── About card ───────────────────────────── */
+/* ── About cards (وريد كير + وريد لاب, side by side after hero) ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .about-card {
   border: 1.5px solid var(--lilac-border);
   border-radius: var(--radius-lg);
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
+  padding: 32px;
+  display: flex;
+  gap: 32px;
   align-items: center;
   background: #fff;
 }
@@ -268,13 +279,18 @@ nav.main-nav a.active {
 .about-card .logo-box {
   border: 1.5px solid var(--lilac-border);
   border-radius: 20px;
-  padding: 32px;
+  padding: 28px 36px;
   display: grid;
   place-items: center;
+  flex: 0 0 auto;
 }
 
 .about-card .logo-box img {
-  width: 200px;
+  width: 190px;
+}
+
+.about-card .about-text {
+  max-width: 62ch;
 }
 
 .about-card h2 {
@@ -836,8 +852,16 @@ footer a:hover {
   }
 
   .about-card {
-    grid-template-columns: 1fr;
-    padding: 28px;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .about-card .logo-box {
+    padding: 18px;
+  }
+
+  .about-card .logo-box img {
+    width: 120px;
   }
 
   .detail {
