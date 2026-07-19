@@ -786,6 +786,78 @@ section.soft {
   opacity: 0.9;
 }
 
+/* ── Agent navigation transition ──────────── */
+.agent-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(94, 50, 150, 0.96), rgba(149, 56, 158, 0.96));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.agent-nav-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.agent-nav-overlay .nav-card {
+  text-align: center;
+  color: #fff;
+  transform: translateY(8px);
+  transition: transform 0.45s ease;
+}
+
+.agent-nav-overlay.visible .nav-card {
+  transform: translateY(0);
+}
+
+.agent-nav-overlay .nav-logo {
+  width: 84px;
+  height: 84px;
+  border-radius: 22px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  animation: agent-nav-pulse 1.1s ease-in-out infinite;
+}
+
+.agent-nav-overlay .nav-logo img {
+  width: 58px;
+}
+
+.agent-nav-overlay .nav-text {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+}
+
+.agent-nav-overlay .nav-dots span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 10px 3px 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  animation: agent-nav-dot 1s infinite;
+}
+
+.agent-nav-overlay .nav-dots span:nth-child(2) { animation-delay: 0.15s; }
+.agent-nav-overlay .nav-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes agent-nav-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes agent-nav-dot {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+}
+
 /* ── Floating contact buttons ─────────────── */
 .floaters {
   /* opposite corner from the tkana chat widget (which mounts bottom-right) */

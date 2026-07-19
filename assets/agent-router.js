@@ -44,13 +44,37 @@
       seen.add(url);
       sessionStorage.setItem(SEEN_KEY, JSON.stringify([...seen]));
       sessionStorage.setItem("tkanaReopen", "1"); // keep the chat open across the redirect
-      window.location.assign(url);
+      const overlay = mountOverlay();
+      requestAnimationFrame(() => overlay.classList.add("visible"));
+      setTimeout(() => window.location.assign(url), 550); // let the fade-in finish
     }, 1200);
   }
 
-  // After an agent-driven redirect, reopen the chat so the conversation continues
+  function mountOverlay() {
+    let overlay = document.querySelector(".agent-nav-overlay");
+    if (overlay) return overlay;
+    overlay = document.createElement("div");
+    overlay.className = "agent-nav-overlay";
+    overlay.innerHTML =
+      '<div class="nav-card">' +
+      '<div class="nav-logo"><img src="/assets/img/logo-mark.svg" alt="" /></div>' +
+      '<div class="nav-text">لحظات... نفتح لك الصفحة</div>' +
+      '<div class="nav-dots"><span></span><span></span><span></span></div>' +
+      "</div>";
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  // After an agent-driven redirect: land under the overlay, ease it out, and
+  // reopen the chat so the conversation continues
   if (sessionStorage.getItem("tkanaReopen") === "1") {
     sessionStorage.removeItem("tkanaReopen");
+    const overlay = mountOverlay();
+    overlay.classList.add("visible");
+    setTimeout(() => {
+      overlay.classList.remove("visible");
+      setTimeout(() => overlay.remove(), 600);
+    }, 650);
     const tryOpen = setInterval(() => {
       if (window.tkanaChatWidget && typeof window.tkanaChatWidget.open === "function" && document.querySelector(".tkana-chat-bubble")) {
         clearInterval(tryOpen);
