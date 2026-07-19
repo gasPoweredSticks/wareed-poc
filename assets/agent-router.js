@@ -32,9 +32,11 @@
     widget.querySelectorAll("a[href*='?page=']").forEach((a) => links.push(a.getAttribute("href")));
     if (!links.length) return;
 
-    const raw = links[links.length - 1]; // most recent mention wins
-    const url = normalize(raw);
-    if (seen.has(url) || samePage(url)) return;
+    // The widget may render newest messages first, so DOM order is unreliable —
+    // act on whichever link we haven't routed to yet.
+    const fresh = [...new Set(links.map(normalize))].filter((u) => !seen.has(u) && !samePage(u));
+    if (!fresh.length) return;
+    const url = fresh[fresh.length - 1];
 
     clearTimeout(pending);
     // small delay so the customer sees the agent message before the page moves
