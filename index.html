@@ -95,7 +95,20 @@
   <script src="/assets/data.js"></script>
   <script src="/assets/app.js"></script>
 
-  <!-- TKANA_WIDGET: paste the tkana widget script snippet below this line -->
+  <!-- TKANA_WIDGET -->
+  <script>
+    (function() {
+      const script = document.createElement('script');
+      script.src = 'https://dev-my.tkana.sa/js/widget.js?id=648ba892fa4515aed78e4652';
+      script.onload = function() {
+        // widget.js auto-inits on load; guard so init() doesn't mount a second bubble
+        if (!document.querySelector('.tkana-chat-bubble')) {
+          tkanaChatWidget.init();
+        }
+      };
+      document.body.appendChild(script);
+    })();
+  </script>
 
 </body>
 </html>

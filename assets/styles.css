@@ -788,8 +788,9 @@ section.soft {
 
 /* ── Floating contact buttons ─────────────── */
 .floaters {
+  /* opposite corner from the tkana chat widget (which mounts bottom-right) */
   position: fixed;
-  inset-inline-start: 22px;
+  inset-inline-end: 22px;
   bottom: 26px;
   display: flex;
   flex-direction: column;

@@ -277,9 +277,9 @@ function renderService(id) {
     </div>`;
 
   document.getElementById("book-btn").addEventListener("click", () => {
-    // The tkana widget handles booking; open it if present, otherwise no-op for now.
-    if (window.tkana && typeof window.tkana.open === "function") {
-      window.tkana.open({ context: { serviceId: s.id, serviceName: s.name, price: s.price } });
+    // Booking happens through the tkana chat widget
+    if (typeof window.tkanaChatWidget !== "undefined" && typeof window.tkanaChatWidget.open === "function") {
+      window.tkanaChatWidget.open();
     } else {
       alert("سيتم تفعيل الحجز عبر المساعد الذكي قريباً");
     }
