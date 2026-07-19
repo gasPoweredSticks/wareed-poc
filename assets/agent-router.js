@@ -47,7 +47,7 @@
       const overlay = mountOverlay();
       requestAnimationFrame(() => overlay.classList.add("visible"));
       setTimeout(() => window.location.assign(url), 550); // let the fade-in finish
-    }, 1200);
+    }, 2200);
   }
 
   function mountOverlay() {
